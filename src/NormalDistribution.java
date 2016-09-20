@@ -1,19 +1,19 @@
-import java.util.*;
-import java.lang.*;
-import jas.random.*;
+import java.util.Random;
+
 
 public class NormalDistribution {
-	private RandomGenerator rg=new RandomGenerator();
+	private Random rg;
 	private long mean;
 	private long sd;
 
 	public NormalDistribution(long mean, long variance){
 		this.mean=mean;
 		this.sd=variance;
+		this.rg = new Random();
 	}
 	
 	public double next(){
-		double ranFileLen=rg.getNormal(mean, sd);
+		double ranFileLen=rg.nextGaussian()*sd +mean;
 		return ranFileLen;
 	}
 }

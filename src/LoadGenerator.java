@@ -1,17 +1,12 @@
 
 
-import org.jfree.data.xy.*;
-import org.jfree.ui.RefineryUtilities;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.TreeMap;
 
 public class LoadGenerator extends Thread{
@@ -42,16 +37,14 @@ public class LoadGenerator extends Thread{
 	static int production=0;
 	static int mpercent=100;
 	static int rpercent=200;
-	 long deadline=0;
-    TreeMap<Long, Integer> timeMap=new TreeMap<Long, Integer>();
-    TreeMap<Long, Integer> fileMap=new TreeMap<Long, Integer>();
-    TreeMap<Long, Integer> popMap=new TreeMap<Long, Integer>();
-    ArrayList DetailedTime=new ArrayList();
-    HashMap<Long,String> request2Block=new HashMap<Long, String>();
-    String out="";
-	/**
-	 * @param args
-	 */
+	long deadline=0;
+	TreeMap<Long, Integer> timeMap=new TreeMap<Long, Integer>();
+	TreeMap<Long, Integer> fileMap=new TreeMap<Long, Integer>();
+	TreeMap<Long, Integer> popMap=new TreeMap<Long, Integer>();
+	ArrayList DetailedTime=new ArrayList();
+	HashMap<Long,String> request2Block=new HashMap<Long, String>();
+	String out="";
+
 
 	public void run() {
 		long blockNumber=HDFS_capacity/64;
@@ -355,55 +348,55 @@ public class LoadGenerator extends Thread{
 			System.out.println("Exception in Executing the shell file"+e.toString());
 		}
 	}
-	public void plotZipf(String title, TreeMap tm, int total,String x_aix, String y_aix) throws IOException{
-		XYSeries xys=new XYSeries(title);
-		double cdf=0.0;
-		xys.add(0,0.0);
-		for(Iterator it = tm.keySet().iterator(); it.hasNext();) {
-
-			Object key = it.next();
-		    Object value = tm.get(key);
-		    double freq=Integer.parseInt(value.toString());
-		    cdf+=freq/total;
-		    //System.out.println("CDF"+cdf);
-		    xys.add(Integer.parseInt(key.toString()),cdf);
-		    //xys.add(java.lang.Math.log((double)Integer.parseInt(key.toString())),java.lang.Math.log((double)freq));
-		}
-	    PlotScatter demo = new PlotScatter(title, xys, x_aix, y_aix);
-	    demo.pack();
-	    RefineryUtilities.centerFrameOnScreen(demo);
-	    demo.setVisible(true);
-	}
-	public void plot(String title, TreeMap tm, int total,String x_aix, String y_aix) throws IOException{
-		XYSeries xys=new XYSeries(title);
-		int expection=0;
-		for(Iterator it = tm.keySet().iterator(); it.hasNext();) {
-		    Object key = it.next();
-		    Object value = tm.get(key);
-		    double freq=Integer.parseInt(value.toString());
-		    //xys.add(Integer.parseInt(key.toString()),freq/total);
-		    xys.add(Integer.parseInt(key.toString()),freq/total);
-		    expection+=(freq/total)*Integer.parseInt(key.toString());
-		    System.out.println("Expection is: "+expection);
-		}
-		System.out.println("Final Expection is: "+expection);
-	    PlotScatter demo = new PlotScatter(title, xys, x_aix, y_aix);
-	    demo.pack();
-	    RefineryUtilities.centerFrameOnScreen(demo);
-	    demo.setVisible(true);
-	}
-	public void plotInterArrival(String title, ArrayList detailedTime, int total,String x_aix, String y_aix) throws IOException{
-		XYSeries xys=new XYSeries(title);
-		for(int i=0;i<DetailedTime.size();i++) {
-		    double timeofEachJob=Double.parseDouble(DetailedTime.get(i).toString());
-		    //xys.add(Integer.parseInt(key.toString()),freq/total);
-		    xys.add(i,timeofEachJob/1000);
-		}
-	    PlotScatter demo = new PlotScatter(title, xys, x_aix, y_aix);
-	    demo.pack();
-	    RefineryUtilities.centerFrameOnScreen(demo);
-	    demo.setVisible(true);
-	}
+//	public void plotZipf(String title, TreeMap tm, int total,String x_aix, String y_aix) throws IOException{
+//		XYSeries xys=new XYSeries(title);
+//		double cdf=0.0;
+//		xys.add(0,0.0);
+//		for(Iterator it = tm.keySet().iterator(); it.hasNext();) {
+//
+//			Object key = it.next();
+//		    Object value = tm.get(key);
+//		    double freq=Integer.parseInt(value.toString());
+//		    cdf+=freq/total;
+//		    //System.out.println("CDF"+cdf);
+//		    xys.add(Integer.parseInt(key.toString()),cdf);
+//		    //xys.add(java.lang.Math.log((double)Integer.parseInt(key.toString())),java.lang.Math.log((double)freq));
+//		}
+//	    PlotScatter demo = new PlotScatter(title, xys, x_aix, y_aix);
+//	    demo.pack();
+//	    RefineryUtilities.centerFrameOnScreen(demo);
+//	    demo.setVisible(true);
+//	}
+//	public void plot(String title, TreeMap tm, int total,String x_aix, String y_aix) throws IOException{
+//		XYSeries xys=new XYSeries(title);
+//		int expection=0;
+//		for(Iterator it = tm.keySet().iterator(); it.hasNext();) {
+//		    Object key = it.next();
+//		    Object value = tm.get(key);
+//		    double freq=Integer.parseInt(value.toString());
+//		    //xys.add(Integer.parseInt(key.toString()),freq/total);
+//		    xys.add(Integer.parseInt(key.toString()),freq/total);
+//		    expection+=(freq/total)*Integer.parseInt(key.toString());
+//		    System.out.println("Expection is: "+expection);
+//		}
+//		System.out.println("Final Expection is: "+expection);
+//	    PlotScatter demo = new PlotScatter(title, xys, x_aix, y_aix);
+//	    demo.pack();
+//	    RefineryUtilities.centerFrameOnScreen(demo);
+//	    demo.setVisible(true);
+//	}
+//	public void plotInterArrival(String title, ArrayList detailedTime, int total,String x_aix, String y_aix) throws IOException{
+//		XYSeries xys=new XYSeries(title);
+//		for(int i=0;i<DetailedTime.size();i++) {
+//		    double timeofEachJob=Double.parseDouble(DetailedTime.get(i).toString());
+//		    //xys.add(Integer.parseInt(key.toString()),freq/total);
+//		    xys.add(i,timeofEachJob/1000);
+//		}
+//	    PlotScatter demo = new PlotScatter(title, xys, x_aix, y_aix);
+//	    demo.pack();
+//	    RefineryUtilities.centerFrameOnScreen(demo);
+//	    demo.setVisible(true);
+//	}
 /*	public TreeMap logTreeMap(TreeMap tm){
 		for()
 		Map results=new TreeMap();
