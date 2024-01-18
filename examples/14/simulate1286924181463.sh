@@ -1,3 +1,0 @@
-nohup time hadoop jar wordCount.jar wordCount	-rnum 10 -input 	/user/generator/file2/file2 	/user/generator/file8/file8 	/user/generator/file55/file55 	/user/generator/file32/file32 	/user/generator/file1/file1 	/user/generator/file1/file1 	/user/generator/file1/file1 	/user/generator/file1/file1 	/user/generator/file2/file2 	/user/generator/file3/file3 	/user/generator/file15/file15 	/user/generator/file1/file1 -output /user/generator/out1286924181463
- mv nohup.out results1286924181463
-date +%s > finishTime_1286924181463.txt

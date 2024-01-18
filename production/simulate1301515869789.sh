@@ -1,3 +1,0 @@
-nohup hadoop jar /opt/hadoop/hadoop-0.20.2-test.jar loadgen -m 10 -keepmap 100 -keepred 200 -indir 	/user/generator/file94/file94 	/user/generator/file1/file1 	/user/generator/file1/file1 	/user/generator/file7/file7 	/user/generator/file50/file50 	/user/generator/file1/file1 	/user/generator/file4/file4 	/user/generator/file77/file77 	/user/generator/file43/file43 	/user/generator/file3/file3 -outdir /user/generator/out1301515869789
- mv nohup.out results1301515869789
-date +%s > finishTime_1301515869789.txt
