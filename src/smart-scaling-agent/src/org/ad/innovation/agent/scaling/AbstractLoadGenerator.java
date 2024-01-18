@@ -13,18 +13,14 @@ public abstract class AbstractLoadGenerator {
     static long variance=1;
     static long waitInterval=0;
     static int randomSize=-1;
-    static int zipf=0;
     static int strictUD=0;
     static int strictSize=10;
     static int normalUD=0;
-    static double skew=10.5;
     static int deadline=0;
 
     ExponentialGenerator timer;
     ExponentialGenerator loadSize;
-    ZipfGenerator zipfDistributor;
     NormalDistribution nd;
-    UniformDistribution ud;
     UniformDistribution loadUD;
     UniformDistribution intervalUD;
     UniformDistribution deadlineUD;
