@@ -1,14 +1,16 @@
+package org.ad.innovation.agent;
+
 import java.util.*;
 import java.lang.*;
-public class UniformDistri {
+public class UniformDistribution {
 	private Random rnd = new Random(System.currentTimeMillis());
 	private int rangeInt;
 	private float rangeFloat;
 	private int nextIntegerValue;
 	private float nextFloatValue;
 	
-	public UniformDistri(){}
-	public UniformDistri(long blockNumber){
+	public UniformDistribution(){}
+	public UniformDistribution(long blockNumber){
 		rangeInt=(int)blockNumber;
 		
 	}
